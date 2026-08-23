@@ -88,7 +88,8 @@ exe = EXE(
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    # 不压缩随包携带的驱动、DLL 和安装程序，避免旧版 UPX 改写或损坏它们。
+    upx=False,
     upx_exclude=[],
     runtime_tmpdir=None,
     console=False,
