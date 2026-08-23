@@ -68,16 +68,16 @@ def main() -> int:
         errors.append(f"设置.json 无效：{exc}")
 
     dd_text = (ROOT / "DD.py").read_text(encoding="utf-8-sig")
-    for marker in ("qm.qq.com", "tencent://", "Q聊"):
+    for marker in ("qm.qq.com", "tencent://", "Q聊", "live.douyin.com", "dy_live_label"):
         if marker in dd_text:
-            errors.append(f"仍存在 QQ 广告标记：{marker}")
+            errors.append(f"仍存在广告入口标记：{marker}")
 
     if errors:
         print("检查失败：")
         for error in errors:
             print(f"  - {error}")
         return 1
-    print(f"检查通过：{len(MODULES)} 个源码文件语法正确，必要资源齐全，QQ 广告入口已移除。")
+    print(f"检查通过：{len(MODULES)} 个源码文件语法正确，必要资源齐全，QQ 与直播广告入口已移除。")
     return 0
 
 

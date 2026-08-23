@@ -2957,11 +2957,6 @@ end
 
         links = tk.Frame(self.root, bg=bg)
         links.pack(fill='x', padx=15, pady=(2, 4))
-        self.dy_live_label = tk.Label(links, text='🎵 检测中…', font=('Microsoft YaHei UI', 8, 'bold'), bg=POP_CARD, fg=POP_SUB, cursor='hand2', padx=6, pady=2)
-        self.dy_live_label.pack(side='left', padx=(4, 0))
-        self.dy_live_label.bind('<Button-1>', lambda _event: webbrowser.open('https://live.douyin.com/Jc__520_'))
-        self._bind_hover(self.dy_live_label, POP_CARD, POP_BTN)
-
         self.settings_label = tk.Label(links, text='设置', font=('Microsoft YaHei UI', 9), bg=POP_BTN, fg=POP_BTN_FG, cursor='hand2', padx=8, pady=2)
         self.settings_label.pack(side='right', padx=(0, 5))
         self.settings_label.bind('<Button-1>', lambda _event: self._open_settings())

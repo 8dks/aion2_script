@@ -97,7 +97,7 @@ def main() -> int:
         errors.append(f"设置.json 无效：{exc}")
 
     all_source = "\n".join(sources.values())
-    for marker in ("47.79.117.138", "qm.qq.com", "tencent://", "Q聊"):
+    for marker in ("47.79.117.138", "qm.qq.com", "tencent://", "Q聊", "live.douyin.com", "dy_live_label"):
         if marker in all_source:
             errors.append(f"仍存在已禁用的远程/广告标记：{marker}")
 
