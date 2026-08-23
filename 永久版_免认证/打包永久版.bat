@@ -6,7 +6,7 @@ py -3.11 -m pip install -r requirements.txt
 if errorlevel 1 goto :failed
 py -3.11 -m pip install "pyinstaller>=6.10"
 if errorlevel 1 goto :failed
-py -3.11 -m PyInstaller --noconfirm --clean --noupx K3M2_永久版.spec
+py -3.11 -m PyInstaller --noconfirm --clean K3M2_永久版.spec
 if errorlevel 1 goto :failed
 echo.
 echo [完成] 永久版已生成：dist\K3M2_永久版.exe
