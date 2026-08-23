@@ -1,0 +1,37 @@
+# 本地还原过程与大型重复运行环境（不属于 GitHub 交付内容）
+/还原代码/
+/验证码模拟器_源码项目/
+/K3M2_完整源码项目/
+/tools/
+/文件清单_SHA256.tsv
+/验证结果.md
+
+# Python 缓存与临时文件
+__pycache__/
+*.py[cod]
+*.tmp
+*.bak
+*.bad
+.build_venv/
+build/
+dist/
+
+# 运行时产生的数据
+**/日志.txt
+**/stderr.log
+**/激活缓存
+**/安装记录.txt
+**/_install_driver.bat
+**/logs/
+**/.ke/
+**/图库/
+**/色库/
+**/文库/
+**/captcha_negatives/
+**/captcha_model.xml
+
+# 编辑器和系统文件
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

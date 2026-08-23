@@ -1,0 +1,15 @@
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.txt text eol=crlf
+*.bat text eol=crlf
+*.lua -text
+*.dll -text
+*.exe -text
+*.onnx -text
+*.pt -text
+*.pkl -text
+*.traineddata -text
+*.cat -text
+*.sys -text
+*.ico -text

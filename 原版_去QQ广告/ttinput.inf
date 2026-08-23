@@ -1,0 +1,98 @@
+;
+; ttinput.inf - composite virtual HID device
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %ProviderString%
+DriverVer   = 07/10/2026,1.0.0.0
+CatalogFile = ttinput.cat
+PnpLockdown = 1
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ttinput.sys = 1
+
+[DestinationDirs]
+DefaultDestDir = 12
+DriverCopyFiles = 12
+
+[Manufacturer]
+%ProviderString% = TTInputModels,NTamd64.10.0...17763,NTamd64.10.0...22000
+
+[TTInputModels.NTamd64.10.0...17763]
+%DeviceDesc% = TTInput_Install_Legacy, ROOT\ttinput
+
+[TTInputModels.NTamd64.10.0...22000]
+%DeviceDesc% = TTInput_Install, ROOT\ttinput
+
+[DriverCopyFiles]
+ttinput.sys
+
+[TTInput_Install.NT]
+Include   = MsHidKmdf.inf
+Needs     = MsHidKmdf.NT
+CopyFiles = DriverCopyFiles
+
+[TTInput_Install.NT.HW]
+Include = MsHidKmdf.inf
+Needs   = MsHidKmdf.NT.HW
+
+[TTInput_Install.NT.Filters]
+AddFilter = ttinputhid,,TTInput_Filter_Install
+
+[TTInput_Filter_Install]
+FilterPosition = Lower
+
+[TTInput_Install.NT.Services]
+Include    = MsHidKmdf.inf
+Needs      = MsHidKmdf.NT.Services
+AddService = ttinputhid,0x00000000,TTInput_Service
+
+[TTInput_Install.NT.Wdf]
+KmdfService = ttinputhid, TTInput_Kmdf
+
+[TTInput_Install_Legacy.NT]
+CopyFiles = DriverCopyFiles
+
+[TTInput_Install_Legacy.NT.HW]
+AddReg = TTInput_Legacy_LowerFilter_AddReg
+
+[TTInput_Install_Legacy.NT.Services]
+AddService = mshidkmdf,0x00000002,TTInput_MsHidKmdf_Service
+AddService = ttinputhid,0x00000000,TTInput_Service
+
+[TTInput_Install_Legacy.NT.Wdf]
+KmdfService = ttinputhid, TTInput_Kmdf
+
+[TTInput_Legacy_LowerFilter_AddReg]
+HKR,,LowerFilters,0x00010000,"ttinputhid"
+
+[TTInput_Service]
+DisplayName    = %ServiceName%
+ServiceType    = 1
+StartType      = 3
+ErrorControl   = 1
+ServiceBinary  = %12%\ttinput.sys
+LoadOrderGroup = Base
+
+[TTInput_MsHidKmdf_Service]
+DisplayName   = %MsHidKmdfServiceName%
+ServiceType   = 1
+StartType     = 3
+ErrorControl  = 1
+ServiceBinary = %12%\mshidkmdf.sys
+
+[TTInput_Kmdf]
+KmdfLibraryVersion = 1.27
+
+[Strings]
+ProviderString       = "ttinput"
+DiskName             = "ttinput Install Disk"
+ServiceName          = "ttinput Composite HID Driver"
+MsHidKmdfServiceName = "Microsoft HID KMDF Filter"
+DeviceDesc           = "ttinput device"
