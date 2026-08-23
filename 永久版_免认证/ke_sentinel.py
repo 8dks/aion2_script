@@ -128,7 +128,7 @@ def _sc5_config(settings):
                             bad.append(f'color_rules[{rule_name}][{group_name}][{index}] color 异常')
                             break
         driver_directory = os.path.join(SCRIPT_DIR, '驱动')
-        official = ['专版.lua', '无闪.lua', '窗口专版.lua', '窗口无闪.lua', '语音测试.lua']
+        official = ['专版.lua', '无闪.lua', '窗口专版.lua', '窗口无闪.lua']
         if os.path.isdir(driver_directory):
             missing = [filename for filename in official if not os.path.exists(os.path.join(driver_directory, filename))]
             if missing:
